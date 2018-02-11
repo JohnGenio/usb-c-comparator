@@ -2,7 +2,7 @@
   <section class="container">
     <input @keyup.enter='search($refs.keywordinput.value)' ref='keywordinput' />
     <div>
-      VGI <input type="checkbox" v-model='types.vgi' />
+      VGA <input type="checkbox" v-model='types.vga' />
     </div>
     <div>
       HDMI <input type="checkbox" v-model='types.hdmi' />
@@ -70,9 +70,9 @@
     data() {
       return {
         types: {
-          hdmi: true,
-          vgi: true,
-          dvi: true
+          hdmi: false,
+          vga: false,
+          dvi: false
         },
         tableData: [{
           name: 'Belkin aaa',
@@ -113,7 +113,7 @@
     computed: {
       filteredData() {
         return this.tableData.filter((data) => {
-          if ((!this.types.vgi || !data.vgi) && (!this.types.hdmi || !data.hdmi) && (!this.types.dvi || !data.dvi)) return false
+          if ((this.types.vga || this.types.hdmi || this.types.dvi) && (!this.types.vga || !data.vga) && (!this.types.hdmi || !data.hdmi) && (!this.types.dvi || !data.dvi)) return false
 
           for (let key in data) {
             const text = data[key].toString().toLowerCase()

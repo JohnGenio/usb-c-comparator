@@ -2,13 +2,13 @@
   <section class="container">
     <input @keyup.enter='search($refs.keywordinput.value)' ref='keywordinput' />
     <div>
-      VGA <input type="checkbox" v-model='types.vga' />
+      VGA <input @click='redirect' type="checkbox" v-model='types.vga' />
     </div>
     <div>
-      HDMI <input type="checkbox" v-model='types.hdmi' />
+      HDMI <input @click='redirect' type="checkbox" v-model='types.hdmi' />
     </div>
     <div>
-      DVI <input type="checkbox" v-model='types.dvi' />
+      DVI <input @click='redirect' type="checkbox" v-model='types.dvi' />
     </div>
     <button @click='search($refs.keywordinput.value)'>Search</button>
     <el-table
@@ -130,7 +130,22 @@
       },
       formatter(row, column) {
         return (row.review * 5) / 100;
+      },
+      redirect() {
+        this.$router.push({
+          name: 'index',
+          query: {
+            vga: this.types.vga,
+            dvi: this.types.dvi,
+            hdmi: this.types.hdmi
+          }
+        })
       }
+    },
+    mounted() {
+      this.types.vga = this.$route.query.vga.toLowerCase() == 'true'
+      this.types.dvi = this.$route.query.dvi.toLowerCase() == 'true'
+      this.types.hdmi = this.$route.query.hdmi.toLowerCase() == 'true'
     }
   }
 </script>

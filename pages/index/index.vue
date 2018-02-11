@@ -1,6 +1,15 @@
 <template>
   <section class="container">
     <input @keyup.enter='search($refs.keywordinput.value)' ref='keywordinput' />
+    <div>
+      VGI <input type="checkbox" v-model='types.vgi' />
+    </div>
+    <div>
+      HDMI <input type="checkbox" v-model='types.hdmi' />
+    </div>
+    <div>
+      DVI <input type="checkbox" v-model='types.dvi' />
+    </div>
     <button @click='search($refs.keywordinput.value)'>Search</button>
     <el-table
       :data="filteredData"
@@ -60,6 +69,11 @@
   export default {
     data() {
       return {
+        types: {
+          hdmi: true,
+          vgi: true,
+          dvi: true
+        },
         tableData: [{
           name: 'Belkin aaa',
           description: '4-Port USB 3.1 Hub',
@@ -99,6 +113,8 @@
     computed: {
       filteredData() {
         return this.tableData.filter((data) => {
+          if ((!this.types.vgi || !data.vgi) && (!this.types.hdmi || !data.hdmi) && (!this.types.dvi || !data.dvi)) return false
+
           for (let key in data) {
             const text = data[key].toString().toLowerCase()
             if (text.indexOf(this.keyword.toLowerCase()) > -1) return true

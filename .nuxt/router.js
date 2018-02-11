@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _93b3282c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
-const _aaae4a26 = () => import('../pages/index/index.vue' /* webpackChunkName: "pages/index/index" */).then(m => m.default || m)
+const _8d1ecaca = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _ff70fe44 = () => import('../pages/index/index.vue' /* webpackChunkName: "pages/index/index" */).then(m => m.default || m)
 
 
 
@@ -55,11 +55,11 @@ export function createRouter () {
     routes: [
 		{
 			path: "/",
-			component: _93b3282c,
+			component: _8d1ecaca,
 			children: [
 				{
 					path: "",
-					component: _aaae4a26,
+					component: _ff70fe44,
 					name: "index"
 				}
 			]

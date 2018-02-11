@@ -15,7 +15,6 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 /* Plugins */
 
-
 // Component: <no-ssr>
 Vue.component(NoSSR.name, NoSSR)
 

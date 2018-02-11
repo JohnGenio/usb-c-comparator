@@ -143,9 +143,11 @@
       }
     },
     mounted() {
-      this.types.vga = this.$route.query.vga.toLowerCase() == 'true'
-      this.types.dvi = this.$route.query.dvi.toLowerCase() == 'true'
-      this.types.hdmi = this.$route.query.hdmi.toLowerCase() == 'true'
+      const { vga, dvi, hdmi } = this.$route.query
+
+      this.types.vga = (vga || '').toLowerCase() == 'true'
+      this.types.dvi = (dvi || '').toLowerCase() == 'true'
+      this.types.hdmi = (hdmi || '').toLowerCase() == 'true'
     }
   }
 </script>

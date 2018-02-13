@@ -35,10 +35,12 @@ module.exports = {
       }
     }
   },
+
   plugins: [
-    '~plugins/element-ui'
+    { src: '~/plugins/iview.js', ssr: true }
   ],
+
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'iview/dist/styles/iview.css'
   ]
 }

@@ -29,10 +29,9 @@
 
   export default {
     asyncData(context) {
-      const { vga, dvi, hdmi } = context.route.query
+      const { vga, dvi, hdmi, keyword } = context.route.query
 
       return {
-        inputContent: '',
         types: {
           hdmi: hdmi || false,
           vga: vga || false,
@@ -90,7 +89,8 @@
           vga: randomBoolean(),
           dvi: randomBoolean()
         }],
-        keyword: ''
+        keyword: keyword || '',
+        inputContent: keyword || ''
       }
     },
     computed: {
@@ -150,7 +150,7 @@
               render(createElement, { row, column, index }) {
                 return createElement(
                   StatusIndicator,
-                  { props:{ status: row.hdmi } }
+                  { props:{ status: row.dvi } }
                 )
               }
             }
@@ -183,6 +183,7 @@
         this.$router.push({
           name: 'index',
           query: {
+            keyword: this.keyword,
             vga: this.types.vga,
             dvi: this.types.dvi,
             hdmi: this.types.hdmi
@@ -191,6 +192,9 @@
       }
     },
     watch: {
+      keyword() {
+        this.redirect()
+      },
       types: {
         handler() {
           this.redirect()
@@ -199,11 +203,12 @@
       }
     },
     mounted() {
-      const { vga, dvi, hdmi } = this.$route.query
+      const { vga, dvi, hdmi, keyword } = this.$route.query
 
       this.types.vga = (vga || '').toLowerCase() == 'true'
       this.types.dvi = (dvi || '').toLowerCase() == 'true'
       this.types.hdmi = (hdmi || '').toLowerCase() == 'true'
+      this.keyword = keyword || ''
     }
   }
 </script>

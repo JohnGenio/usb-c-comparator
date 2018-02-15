@@ -10,7 +10,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Comparison App for USB Type C' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', type: 'text/css', href: '/styles/iview.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/styles/fontawesome.min.css' }
     ]
   },
   /*
@@ -38,9 +40,5 @@ module.exports = {
 
   plugins: [
     { src: '~/plugins/iview.js', ssr: true }
-  ],
-
-  css: [
-    'iview/dist/styles/iview.css'
   ]
 }

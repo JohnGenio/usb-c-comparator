@@ -161,7 +161,7 @@
       },
       filteredData() {
         return this.tableData.filter((data) => {
-          if ((this.types.vga || this.types.hdmi || this.types.dvi) && (!this.types.vga || !data.vga) && (!this.types.hdmi || !data.hdmi) && (!this.types.dvi || !data.dvi)) return false
+          if ((this.types.vga || this.types.hdmi || this.types.dvi) && ((this.types.vga && !data.vga) || (this.types.hdmi && !data.hdmi) || (this.types.dvi && !data.dvi))) return false
 
           for (let key in data) {
             const text = data[key].toString().toLowerCase()

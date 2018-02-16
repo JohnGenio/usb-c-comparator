@@ -14,11 +14,12 @@
         <span>DVI</span>
       </Checkbox>
     </CheckboxGroup>
-    <i-table :columns='parsedColumns' :data='filteredData' />
+    <i-table :height='500' :columns='parsedColumns' :data='filteredData' />
   </section>
 </template>
 
 <script>
+  import faker from 'faker'
   import Name from '@/components/index/name'
   import Review from '@/components/index/review'
   import StatusIndicator from '@/components/index/status-indicator'
@@ -30,6 +31,19 @@
   export default {
     asyncData(context) {
       const { vga, dvi, hdmi, keyword } = context.route.query
+      const tableData = []
+
+      for (let i = 0; i < 300; i++) {
+        tableData.push({
+          name: faker.fake('{{commerce.productName}}'),
+          description: '4-Port USB 3.1 Hub',
+          price: faker.random.number(),
+          review: faker.random.number({min:60, max:100}),
+          hdmi: randomBoolean(),
+          vga: randomBoolean(),
+          dvi: randomBoolean()
+        })
+      }
 
       return {
         types: {
@@ -39,56 +53,31 @@
         },
         columns: [{
           title: 'Name',
-          key: 'name'
+          key: 'name',
+          sortable: true,
+          fixed: 'left'
         }, {
           title: 'price',
-          key: 'price'
+          key: 'price',
+          sortable: true
         }, {
           title: 'review',
-          key: 'review'
+          key: 'review',
+          sortable: true
         }, {
           title: 'hdmi',
-          key: 'hdmi'
+          key: 'hdmi',
+          sortable: true
         }, {
           title: 'dvi',
-          key: 'dvi'
+          key: 'dvi',
+          sortable: true
         }, {
           title: 'vga',
-          key: 'vga'
+          key: 'vga',
+          sortable: true
         }],
-        tableData: [{
-          name: 'Belkin aaa',
-          description: '4-Port USB 3.1 Hub',
-          price: 50,
-          review: 89,
-          hdmi: randomBoolean(),
-          vga: randomBoolean(),
-          dvi: randomBoolean()
-        }, {
-          name: 'Belkin bbb',
-          description: '4-Port USB 3.1 Hub',
-          price: 50,
-          review: 89,
-          hdmi: randomBoolean(),
-          vga: randomBoolean(),
-          dvi: randomBoolean()
-        },{
-          name: 'Belkin ccc',
-          description: '4-Port USB 3.1 Hub',
-          price: 50,
-          review: 89,
-          hdmi: randomBoolean(),
-          vga: randomBoolean(),
-          dvi: randomBoolean()
-        },{
-          name: 'Belkin ddd',
-          description: '4-Port USB 3.1 Hub',
-          price: 50,
-          review: 89,
-          hdmi: randomBoolean(),
-          vga: randomBoolean(),
-          dvi: randomBoolean()
-        }],
+        tableData,
         keyword: keyword || '',
         inputContent: keyword || ''
       }

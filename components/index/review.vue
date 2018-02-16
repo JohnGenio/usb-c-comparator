@@ -15,7 +15,7 @@
     },
     computed: {
       outOf5() {
-        return (this.review / 100) * 5
+        return ((this.review / 100) * 5).toFixed(2)
       }
     }
   }

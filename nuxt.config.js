@@ -39,6 +39,7 @@ module.exports = {
   },
 
   plugins: [
-    { src: '~/plugins/iview.js', ssr: true }
+    { src: '~/plugins/iview.js', ssr: true },
+    { src: '~/plugins/vuetable.js', ssr: true }
   ]
 }

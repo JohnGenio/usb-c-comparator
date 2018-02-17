@@ -15,7 +15,8 @@
   "dependencies": {
     "faker": "^4.1.0",
     "iview": "^2.9.2",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "vue-good-table": "^1.19.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

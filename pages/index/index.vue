@@ -14,7 +14,9 @@
         <span>DVI</span>
       </Checkbox>
     </CheckboxGroup>
-    <i-table :height='500' :columns='parsedColumns' :data='filteredData' />
+    <no-ssr>
+      <vue-good-table :height='500' :columns='parsedColumns' :rows='filteredData' />
+    </no-ssr>
   </section>
 </template>
 
@@ -52,29 +54,34 @@
           dvi: dvi || false
         },
         columns: [{
-          title: 'Name',
-          key: 'name',
+          label: 'Name',
+          field: 'name',
           sortable: true,
           fixed: 'left'
         }, {
-          title: 'price',
-          key: 'price',
+          label: 'price',
+          field: 'price',
+          type: 'number',
           sortable: true
         }, {
-          title: 'review',
-          key: 'review',
+          label: 'review',
+          field: 'review',
+          type: 'number',
           sortable: true
         }, {
-          title: 'hdmi',
-          key: 'hdmi',
+          label: 'hdmi',
+          field: 'hdmi',
+          type: 'number',
           sortable: true
         }, {
-          title: 'dvi',
-          key: 'dvi',
+          label: 'dvi',
+          field: 'dvi',
+          type: 'number',
           sortable: true
         }, {
-          title: 'vga',
-          key: 'vga',
+          label: 'vga',
+          field: 'vga',
+          type: 'number',
           sortable: true
         }],
         tableData,

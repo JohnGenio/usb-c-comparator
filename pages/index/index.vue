@@ -116,7 +116,7 @@
             }
           }
 
-          if (column.key === 'vga') {
+          if (column.field === 'vga') {
             return {
               ...column,
               render(createElement, { row, column, index }) {
@@ -124,11 +124,14 @@
                   StatusIndicator,
                   { props:{ status: row.vga } }
                 )
+              },
+              sortFn(a) {
+                return a ? 1 : -1
               }
             }
           }
 
-          if (column.key === 'hdmi') {
+          if (column.field === 'hdmi') {
             return {
               ...column,
               render(createElement, { row, column, index }) {
@@ -136,11 +139,14 @@
                   StatusIndicator,
                   { props:{ status: row.hdmi } }
                 )
+              },
+              sortFn(a) {
+                return a ? 1 : -1
               }
             }
           }
 
-          if (column.key === 'dvi') {
+          if (column.field === 'dvi') {
             return {
               ...column,
               render(createElement, { row, column, index }) {
@@ -148,6 +154,9 @@
                   StatusIndicator,
                   { props:{ status: row.dvi } }
                 )
+              },
+              sortFn(a) {
+                return a ? 1 : -1
               }
             }
           }
